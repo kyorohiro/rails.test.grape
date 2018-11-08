@@ -1,24 +1,15 @@
-# README
+# GRAPE SAMPLE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
 
-* Ruby version
+curl http://localhost:8080/api/v1/messages/1
 
-* System dependencies
+curl http://localhost:8080/api/v1/messages
 
-* Configuration
+curl http://localhost:8080/api/v1/messages -X POST -H "Content-Type: application/json" -d '{"title": "t", "content":"c"}'
 
-* Database creation
+curl http://localhost:8080/api/v1/messages/1  -X PUT -H "Content-Type: application/json" -d '{"id": "t"}'
 
-* Database initialization
+curl http://localhost:8080/api/v1/messages/1  -X DELETE -H "Content-Type: application/json" -d '{"id": "t"}'
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
