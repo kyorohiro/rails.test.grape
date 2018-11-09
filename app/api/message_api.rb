@@ -13,7 +13,7 @@ class MessageAPI < Grape::API
 
     desc "response message list"
     params do
-      requires :id
+      requires :id, type: Integer
     end
     route_param :id do
       get do
@@ -32,7 +32,7 @@ class MessageAPI < Grape::API
     
     desc "update message"
     params do
-      requires :id
+      requires :id, type: Integer
     end
     route_param :id do
       put do
@@ -48,6 +48,19 @@ class MessageAPI < Grape::API
       delete do
          Message.new(title: "yamada", content: "game #{params[:id]}")
       end
+    end
+    
+    desc "complex request"
+    params do
+      requires :xxx, type: Hash do
+        requires :messages,type: Array[JSON] do
+          requires :content
+          requires :title
+        end
+      end
+    end
+    post "complex" do
+      params[:xxx][:messages]
     end
   end
   
