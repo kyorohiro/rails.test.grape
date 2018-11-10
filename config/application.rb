@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module RailsTestGrape
+#module RailsTestGrape
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
@@ -19,4 +19,4 @@ module RailsTestGrape
     config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
     config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
   end
-end
+#end
