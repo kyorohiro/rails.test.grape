@@ -7,8 +7,8 @@ class MessageAPI < Grape::API
   resource "messages" do
     desc "response message list"
     get do
-      [ Message.new(title: "yamada", content: "game"),
-        Message.new(title: "yamada", content: "game")]
+      [ Message.new(id: 1, title: "yamada", content: "game"),
+        Message.new(id: 2, title: "yamada", content: "game")]
     end
 
     desc "response message list"
@@ -17,17 +17,17 @@ class MessageAPI < Grape::API
     end
     route_param :id do
       get do
-         Message.new(title: "yamada", content: "game #{params[:id]}")
+         Message.new(id: params[:id], title: "yamada", content: "game")
       end
     end
     
     desc "post message"
     params do
-      requires :title
-      requires :content
+      requires :title, type: String
+      requires :content, type: String
     end
     post do
-      Message.new(title: "#{params[:title]}:", content: "#{params[:content]}")
+      Message.new(id: 3, title: "#{params[:title]}:", content: "#{params[:content]}")
     end
     
     desc "update message"
@@ -36,7 +36,7 @@ class MessageAPI < Grape::API
     end
     route_param :id do
       put do
-        Message.new(title: "yamada", content: "game #{params[:id]}")
+        Message.new(id: params[:id], title: "yamada", content: "game #{params[:id]}")
       end
     end
     
